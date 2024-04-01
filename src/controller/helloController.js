@@ -7,4 +7,6 @@ export const hello = (req, res) => {
   });
 };
 
-export const helloQuery = (req, res) => {};
+export const helloQuery = (req, res) => {
+  res.send("Hello World Query!");
+};
