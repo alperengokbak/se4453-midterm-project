@@ -2,10 +2,11 @@
 import Router from "express";
 
 // Importing Controller class
-import { hello } from "../controller/helloController.js";
+import { hello, helloQuery } from "../controller/helloController.js";
 
 const router = Router();
 
 router.get("/", hello);
+router.get("/hello", helloQuery);
 
 export default router;
