@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 DS_Store
+DigiCertGlobalRootCA.crt.pem
+se4453-midterm-pg-management_key.pem
