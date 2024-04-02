@@ -1,15 +1,19 @@
-import pkg from "pg";
+import { Client } from "pg";
 import dotenv from "dotenv";
-import fs from "fs";
 
 dotenv.config();
 
 const { Client } = pkg;
 
-export const conn = new Client({
+const config = {
   host: process.env.PGHOST,
   port: process.env.PGPORT,
   user: process.env.PGUSER,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
-});
+  ssl: {
+    rejectUnauthorized: false,
+  },
+};
+
+export const conn = new Client({ config });
