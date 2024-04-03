@@ -1,20 +1,14 @@
 import pkg from "pg";
-import { getSecret } from "./getSecret.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const { Client } = pkg;
 
-export async function connectToDatabase() {
-  try {
-    const connectionString = await getSecret();
-    const client = new Client({
-      connectionString: connectionString,
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    });
-    await client.connect();
-    console.log("Connected to PostgreSQL database");
-  } catch (error) {
-    console.error("Error connecting to PostgreSQL database:", error);
-  }
-}
+export const conn = new Client({
+  host: process.env.PGHOST,
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDATABASE,
+  port: process.env.PGPORT,
+  ssl: true,
+});
