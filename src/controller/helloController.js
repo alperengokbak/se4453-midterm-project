@@ -1,14 +1,16 @@
 import { conn } from "../database/databaseConnection.js";
 
+conn
+  .connect()
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch((err) => {
+    console.error("Error connecting to database:", err);
+  });
+
 export const hello = (req, res) => {
-  conn
-    .connect()
-    .then(() => {
-      res.send("Hello World!");
-    })
-    .catch((err) => {
-      res.send("Error: " + err);
-    });
+  res.send("Hello World!");
 };
 
 export const helloQuery = (req, res) => {
