@@ -1,12 +1,14 @@
 import { conn } from "../database/databaseConnection.js";
 
 export const hello = (req, res) => {
-  conn.query("SELECT * FROM hello", (err, result) => {
-    if (err) {
-      console.log(err);
-    }
-    res.send(result.rows);
-  });
+  conn
+    .connect()
+    .then(() => {
+      res.send("Hello World!");
+    })
+    .catch((err) => {
+      res.send("Error: " + err);
+    });
 };
 
 export const helloQuery = (req, res) => {
